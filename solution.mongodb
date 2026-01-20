@@ -1,5 +1,7 @@
-use companyDB
+// 1. Connect to Database
+db = db.getSiblingDB("companyDB")
 
+// 2. Insert Dummy Data (at least 5 records)
 db.employees.insertMany([
   { name: "Rahul", department: "IT", salary: 60000, age: 30 },
   { name: "Anita", department: "HR", salary: 45000, age: 28 },
@@ -8,30 +10,21 @@ db.employees.insertMany([
   { name: "Suresh", department: "Sales", salary: 25000, age: 22 }
 ])
 
-
+// 3. Exercise 2: Simple Find Queries
 db.employees.find({ department: "IT" })
-
-
 db.employees.find({ name: "Rahul" })
 
-
+// 4. Exercise 3: Formatting & Distinct
 db.employees.find().pretty()
-
-
 db.employees.distinct("department")
 
-
+// 5. Exercise 4: Salary Analysis ($gt, $lt)
 db.employees.find({ salary: { $gt: 50000 } })
-
-
 db.employees.find({ salary: { $lt: 30000 } })
 
-
+// 6. Exercise 5: Age Filtering ($gte, $lte)
 db.employees.find({ age: { $gte: 30 } })
-
-
 db.employees.find({ age: { $lte: 25 } })
 
-db.employees.find({
-  salary: { $gte: 40000, $lte: 80000 }
-})
+// 7. Exercise 6: Range Queries
+db.employees.find({ salary: { $gte: 40000, $lte: 80000 } })
