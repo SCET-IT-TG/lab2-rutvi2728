@@ -77,3 +77,4 @@ db.employees.find({
 db.employees.find({
   salary: { $gte: 40000, $lte: 80000 }
 });
+
