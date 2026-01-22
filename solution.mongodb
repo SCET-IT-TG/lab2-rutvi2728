@@ -1,5 +1,3 @@
-//Exercise 1: Data Setup
-
 db = db.getSiblingDB("companyDB");
 
 db.employees.insertMany([
@@ -35,48 +33,28 @@ db.employees.insertMany([
   }
 ]);
 
-
-//Exercise 2: Simple Find Queries
+// Exercise 2: Simple Find Queries
 
 db.employees.find({ department: "IT" });
 
 db.employees.find({ name: "Rahul" });
 
+// Exercise 4: Salary Analysis
 
-//Exercise 3: Formatting & Distinct
+db.employees.find({ salary: { $gt: 50000 } });
 
-db.employees.find().pretty();
+db.employees.find({ salary: { $lt: 30000 } });
 
-db.employees.distinct("department");
+// Exercise 5: Age Filtering
 
+db.employees.find({ age: { $gte: 30 } });
 
-//Exercise 4: Salary Analysis ($gt, $lt)
+db.employees.find({ age: { $lte: 25 } });
 
-db.employees.find({
-  salary: { $gt: 50000 }
-});
+// Exercise 6: Range Queries
 
-db.employees.find({
-  salary: { $lt: 30000 }
-});
+db.employees.find({ salary: { $gte: 40000, $lte: 80000 } });
 
-
-//Exercise 5: Age Filtering ($gte, $lte)
-
-db.employees.find({
-  age: { $gte: 30 }
-});
-
-db.employees.find({
-  age: { $lte: 25 }
-});
-
-
-//Exercise 6: Range Queries
-
-db.employees.find({
-  salary: { $gte: 40000, $lte: 80000 }
-});
 
 
 
